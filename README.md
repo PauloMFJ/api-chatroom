@@ -1,14 +1,14 @@
-# [Chatroom](https://app-ng-chatroom.herokuapp.com/)
+# [Chatroom](https://app-chatroom-ng.herokuapp.com/)
 
 This repository contains the api source code for [chatroom](https://app-chatroom-ng.herokuapp.com/).
 
 ## Build Setup
 
 ``` bash
-# First, you run
+# On first run
 dotnet restore
 
-# Then to install dependencies
+# To install dependencies
 dotnet build
 
 # To compile
