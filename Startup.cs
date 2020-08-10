@@ -15,7 +15,14 @@ namespace api_chatroom {
 
         public void ConfigureServices(IServiceCollection services) {
             services.AddCors((options) => {
-                options.AddPolicy("CorsPolicy",
+                options.AddPolicy("DevelopmentCorsPolicy",
+                    (builder) => {
+                        builder.WithOrigins("http://localhost:4200")
+                               .AllowAnyHeader()
+                               .AllowAnyMethod()
+                               .AllowCredentials();
+                    });
+                options.AddPolicy("ProductionCorsPolicy",
                     (builder) => {
                         builder.WithOrigins("https://app-chatroom-ng.herokuapp.com")
                                .AllowAnyHeader()
@@ -31,9 +38,11 @@ namespace api_chatroom {
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
+    
+                app.UseCors("DevelopmentCorsPolicy");
+            } else {
+                app.UseCors("ProductionCorsPolicy");
             }
-
-            app.UseCors("CorsPolicy");
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
