@@ -17,7 +17,7 @@ namespace api_chatroom {
             services.AddCors((options) => {
                 options.AddPolicy("CorsPolicy",
                     (builder) => {
-                        builder.WithOrigins("http://localhost:4200")
+                        builder.WithOrigins("https://app-chatroom-ng.herokuapp.com")
                                .AllowAnyHeader()
                                .AllowAnyMethod()
                                .AllowCredentials();
